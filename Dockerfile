@@ -1,8 +1,9 @@
 # Set Node version in container
-FROM node:12
+FROM node:latest
 
 # Set working directory
-WORKDIR /usr/src/app
+RUN mkdir -p /src/app
+WORKDIR /src/app
 
 # Install app dependencies. A wildcard is used to ensure both
 # package.json AND package-lock.json are copied where available (npm@5+)
@@ -20,4 +21,4 @@ COPY . .
 # Expose port to Docker daemon on port 8080
 EXPOSE 8080
 
-CMD [ "node", "build/" ]
+CMD [ "node", "build/app.js" ]
